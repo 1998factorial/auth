@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>REGISTER</h1>
+<BR><BR>
+<form action="" method="post">
+<input type="email" placeholder="Email" name="email" value="{{
+request.form.email}}" required>
+<input type="password" placeholder="Password" name="password" value="{{
+request.form.password}}" required>
+<input class="btn btn-default" type="submit" value="REGISTER">
+<a href="/login">back to login page!</a>
+</form>
+{% endblock %}
