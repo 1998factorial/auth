@@ -104,3 +104,41 @@ def logout():
     if session.get('logged_in'):
         session.pop('logged_in')
     return redirect(url_for('login')) #redirect user to login page
+
+import simplejson as json
+def ok_json(data, msg = None):
+    try:
+        s =  json.dumps({"ok":True,"data":data, "msg":msg})
+        return s
+    except Exception as e:
+        print e
+        return None
+
+def fail_json(errmsg,data = None):
+    try:
+        s =  json.dumps({"ok":False,"data":data,"error":errmsg})
+        return s
+    except Exception as e:
+        print e
+        return None
+		
+@app.route('/user/api/login',methods=['POST'])
+def login():
+    username = request.form['username']
+    password = request.form['password']
+	if username and password:
+	    is_login = True
+	    # please add login code here.  and please set is_login = true if succeeded. 
+		.... here is code for login ..... 
+		......
+		....
+		
+		
+		if is_login:
+			user_data = {'username':username, 'uid':xxxx,  .... }  		# please provide the user info.  
+		    return  Response(ok_json(user_data), mimetype='application/json')
+		else:
+		    return  Response(fail_json("CANNOT Login. something error!"), mimetype='application/json')
+	else
+        return  Response(fail_json("username or password not found!"), mimetype='application/json')
+	    
