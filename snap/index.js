@@ -61,7 +61,7 @@ function submit(){
     formData.append("back",back_data);
     //需引入jQuery
     $.ajax({
-        url:"/地址",
+        url:"/127.0.0.1:5000", //type in url
         type: 'POST',
         cache: false,
         data: formData,
